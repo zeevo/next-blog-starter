@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Head from "next/head";
 import { notFound } from "next/navigation";
-import { type PostType } from "../../../interfaces/post";
 import { getAllPosts, getPostBySlug } from "../../../lib/api";
 import { CMS_NAME } from "../../../lib/constants";
 import markdownToHtml from "../../../lib/markdownToHtml";
@@ -10,12 +9,6 @@ import Container from "../../_components/container";
 import Header from "../../_components/header";
 import { PostBody } from "../../_components/post-body";
 import { PostHeader } from "../../_components/post-header";
-
-type Props = {
-  post: PostType;
-  morePosts: PostType[];
-  preview?: boolean;
-};
 
 export default async function Post({ params }: Params) {
   const post = getPostBySlug(params.slug);
@@ -71,7 +64,7 @@ export function generateMetadata({ params }: Params): Metadata {
   };
 }
 
-export async function generateStaticParams({ params }: Params) {
+export async function generateStaticParams() {
   const posts = getAllPosts();
 
   return posts.map((post) => ({
