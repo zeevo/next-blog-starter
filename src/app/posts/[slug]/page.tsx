@@ -1,18 +1,15 @@
-import { notFound, useRouter } from "next/navigation";
-import ErrorPage from "next/error";
-import Container from "../../_components/container";
-import { PostBody } from "../../_components/post-body";
-import Header from "../../_components/header";
-import { PostHeader } from "../../_components/post-header";
-import { getPostBySlug, getAllPosts } from "../../../lib/api";
-import { PostTitle } from "../../_components/post-title";
+import { Metadata } from "next";
 import Head from "next/head";
+import { notFound } from "next/navigation";
+import { type PostType } from "../../../interfaces/post";
+import { getAllPosts, getPostBySlug } from "../../../lib/api";
 import { CMS_NAME } from "../../../lib/constants";
 import markdownToHtml from "../../../lib/markdownToHtml";
-import { type PostType } from "../../../interfaces/post";
-import Layout from "../../layout";
 import Alert from "../../_components/alert";
-import { Metadata } from "next";
+import Container from "../../_components/container";
+import Header from "../../_components/header";
+import { PostBody } from "../../_components/post-body";
+import { PostHeader } from "../../_components/post-header";
 
 type Props = {
   post: PostType;
